@@ -1,5 +1,16 @@
 {
-    "framework": null,
-    "github": { "silent": true },
-    "routes": [{ "src": "/.*", "dest": "/api/vercel.ts" }]
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json", // Or point to your main entry file if known, e.g., "api/index.js" or "app.js"
+      "use": "@vercel/node" // Use the Node.js builder
+      // No "outputDirectory" is specified here, letting the @vercel/node builder handle it.
+    }
+  ],
+  "routes": [
+    // This route handles all incoming requests and sends them to the Node.js function
+    { "src": "/(.*)", "dest": "/" }
+    // You might need more specific routes depending on how RSSHub serves content,
+    // but this is a common starting point for a Node.js backend on Vercel.
+  ]
 }
